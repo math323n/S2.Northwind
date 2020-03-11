@@ -8,11 +8,12 @@ namespace Entities
     public class OrderDetail
     {
         protected int orderID;
+        protected int productID;
         protected decimal unitPrice;
         protected short quantity;
         protected float discount;
 
-        public OrderDetail(int orderID, decimal unitPrice, short quantity, float discount)
+        public OrderDetail(int orderID, int productID, decimal unitPrice, short quantity, float discount)
         {
             OrderID = orderID;
             UnitPrice = unitPrice;
@@ -29,6 +30,21 @@ namespace Entities
             set
             {
                 orderID = value;
+            }
+        }
+        public virtual int ProductID
+        {
+            get
+            {
+                return productID;
+            }
+
+            set
+            {
+                if(value != productID)
+                {
+                    productID = value;
+                }
             }
         }
 

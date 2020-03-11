@@ -10,32 +10,32 @@ namespace Entities
         protected DateTime requiredDate;
         protected DateTime shippedDate;
         protected int shipVia;
-        protected decimal money;
+        protected decimal freight;
         protected string shipName;
         protected string shipAddress;
         protected string shipCity;
         protected string shipRegion;
         protected string shipPostalCode;
         protected string shipCountry;
-        protected List<OrderDetail> orderDetail;
+        protected List<OrderDetail> orderDetails;
 
         public Order(int orderID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,
-            int shipVia, decimal money, string shipName, string shipAddress, string shipCity,
-            string shipRegion, string shipPostalCode, string shipCountry)
+            int shipVia, decimal freight, string shipName, string shipAddress, string shipCity,
+            string shipRegion, string shipPostalCode, string shipCountry, List<OrderDetail> orderDetails)
         {
             OrderID = orderID;
             OrderDate = orderDate;
             RequiredDate = requiredDate;
             ShippedDate = shippedDate;
             ShipVia = shipVia;
-            Money = money;
+            Freight = freight;
             ShipName = shipName;
             ShipAddress = shipAddress;
             ShipCity = shipCity;
             ShipRegion = shipRegion;
             ShipPostalCode = shipPostalCode;
             ShipCountry = shipCountry;
-            OrderDetail = orderDetail;
+            OrderDetails = orderDetails;
         }
 
         public virtual int OrderID
@@ -98,15 +98,15 @@ namespace Entities
             }
         }
 
-        public virtual decimal Money
+        public virtual decimal Freight
         {
             get
             {
-                return money;
+                return freight;
             }
             set
             {
-                money = value;
+                freight = value;
             }
         }
 
@@ -181,24 +181,21 @@ namespace Entities
                 shipCountry = value;
             }
         }
-        public virtual List<OrderDetail> OrderDetail
+        public virtual List<OrderDetail> OrderDetails
         {
             get
             {
-                return orderDetail;
+                return orderDetails;
             }
+
             set
             {
-                if(value != orderDetail)
+                if(orderDetails != value)
                 {
-                    orderDetail = value;
+                    orderDetails = value;
                 }
             }
         }
-        /*
-        public override string ToString()
-        {
-            return $"ID: {orderID}\nOrderDate: {orderDate.ToString("dd/MM/yyyy")}\nOrderdetails: {orderDetail.ToString()}";
-        }*/
+      
     }
 }

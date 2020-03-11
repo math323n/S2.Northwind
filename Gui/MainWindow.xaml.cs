@@ -28,8 +28,8 @@ namespace Gui
         public MainWindow()
         {
             InitializeComponent();
-            Repository.GetAllOrderDetails();
-            Repository.GetAllOrders();
+          Repository.GetAllOrderDetails();
+           Repository.GetAllOrders();
             viewModel = new ViewModel();
             DataContext = viewModel;
         }
