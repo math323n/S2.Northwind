@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Entities
 {
@@ -16,10 +17,11 @@ namespace Entities
         protected string shipRegion;
         protected string shipPostalCode;
         protected string shipCountry;
+        protected List<OrderDetail> orderDetail;
 
         public Order(int orderID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,
             int shipVia, decimal money, string shipName, string shipAddress, string shipCity,
-            string shipRegion, string shipPostalCode, string shipCountry)
+            string shipRegion, string shipPostalCode, string shipCountry, List<OrderDetail> orderDetail)
         {
             OrderID = orderID;
             OrderDate = orderDate;
@@ -33,6 +35,7 @@ namespace Entities
             ShipRegion = shipRegion;
             ShipPostalCode = shipPostalCode;
             ShipCountry = shipCountry;
+            OrderDetail = orderDetail;
         }
 
         public virtual int OrderID
@@ -176,6 +179,20 @@ namespace Entities
             set
             {
                 shipCountry = value;
+            }
+        }
+        public virtual List<OrderDetail> OrderDetail
+        {
+            get
+            {
+                return orderDetail;
+            }
+            set
+            {
+                if(value != orderDetail)
+                {
+                    orderDetail = value;
+                }
             }
         }
 

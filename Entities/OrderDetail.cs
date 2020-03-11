@@ -51,7 +51,15 @@ namespace Entities
             }
             set
             {
-                quantity = value;
+                (bool isValid, string errorMessage) = ValidateIsNegative(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(nameof(Quantity), errorMessage);
+                }
+                if(value != quantity)
+                {
+                    quantity = value;
+                }
             }
         }
 
@@ -64,6 +72,19 @@ namespace Entities
             set
             {
                 discount = value;
+            }
+        }
+
+        public static (bool, string) ValidateIsNegative(int number)
+        {
+            if(number <= 0)
+            {
+                return (false, "Error, number below or equal to 0.");
+                
+            }
+            else
+            {
+                return (true, string.Empty);
             }
         }
     }
