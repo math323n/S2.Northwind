@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Utilities;
 
 namespace Entities
 {
@@ -51,7 +52,7 @@ namespace Entities
             }
             set
             {
-                (bool isValid, string errorMessage) = ValidateIsNegative(value);
+                (bool isValid, string errorMessage) = Validations.ValidateIsNegative(value);
                 if(!isValid)
                 {
                     throw new ArgumentException(nameof(Quantity), errorMessage);
@@ -73,19 +74,6 @@ namespace Entities
             {
                 discount = value;
             }
-        }
-
-        public static (bool, string) ValidateIsNegative(int number)
-        {
-            if(number <= 0)
-            {
-                return (false, "Error, number below or equal to 0.");
-                
-            }
-            else
-            {
-                return (true, string.Empty);
-            }
-        }
+        } 
     }
 }
