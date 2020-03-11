@@ -6,11 +6,38 @@
         xmlns:local="clr-namespace:Gui"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450"
-        Width="800">
+        Height="600"
+        Width="1024">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
 
-        <ListView
-            ItemsSource="{Binding Orders}"></ListView>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="listView_employees"
+                  BorderThickness="1"
+                  Grid.ColumnSpan="2"
+                  Background="LightGray"
+                  Grid.RowSpan="19"
+                  ItemsSource="{Binding Orders}"
+                  >
+            <DataGrid.Columns>
+              
+            </DataGrid.Columns>
+        </DataGrid>
+        
+       
+     
+     
+       
     </Grid>
 </Window>
+ 

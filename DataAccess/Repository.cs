@@ -42,6 +42,27 @@ namespace DataAccess
             connection.Close();
             return orders;
         }
+        public static List<Order> GetAllOrderDetails()
+        {
+            string sql = "SELECT * FROM [Order Details]";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            while(reader.Read())
+            {
+                int orderID = (int)reader["OrderID"];
+                decimal unitPrice = (decimal)reader["UnitPrice"];
+                short quantity = (short)reader["Quantity"];
+                float discount = (float)reader["Discount"];
+
+                OrderDetail detail = new OrderDetail(orderID, unitPrice, quantity, discount);
+                orderDetails.Add(detail);
+            }
+            connection.Close();
+            return orders;
+        }
 
 
     }

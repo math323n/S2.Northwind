@@ -9,10 +9,10 @@ namespace Entities
     {
         protected int orderID;
         protected decimal unitPrice;
-        protected int quantity;
+        protected short quantity;
         protected float discount;
 
-        public OrderDetail(int orderID, decimal unitPrice, int quantity, float discount)
+        public OrderDetail(int orderID, decimal unitPrice, short quantity, float discount)
         {
             OrderID = orderID;
             UnitPrice = unitPrice;
@@ -44,7 +44,7 @@ namespace Entities
             }
         }
 
-        public virtual int Quantity
+        public virtual short Quantity
         {
             get
             {
