@@ -13,11 +13,12 @@ namespace Gui
         public ViewModel()
         {
             Repository repository = new Repository();
-            
+
             List<Order> orders = repository.GetAllOrders();
+            List<OrderDetail> orderDetails = repository.GetAllOrderDetails();
+
             Orders = new ObservableCollection<Order>(orders);
-
-
+            OrderDetails = new ObservableCollection<OrderDetail>(orderDetails);
 
         }
 
@@ -25,5 +26,6 @@ namespace Gui
         public ObservableCollection<OrderDetail> OrderDetails { get; set; }
 
         public Order SelectedOrder { get; set; }
+        public OrderDetail SelectedOrderDetail { get; set; }
     }
 }

@@ -4,7 +4,7 @@ namespace Utilities
 {
     public class Validations
     {
-        public static (bool, string) ValidateIsNegative(int number)
+        public static (bool, string) ValidateIsNegative(double number)
         {
             if(number <= 0)
             {

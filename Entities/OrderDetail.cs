@@ -16,6 +16,7 @@ namespace Entities
         public OrderDetail(int orderID, int productID, decimal unitPrice, short quantity, float discount)
         {
             OrderID = orderID;
+            ProductID = productID;
             UnitPrice = unitPrice;
             Quantity = quantity;
             Discount = discount;

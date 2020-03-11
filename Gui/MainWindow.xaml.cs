@@ -23,15 +23,20 @@ namespace Gui
     public partial class MainWindow: Window
     {
 
-        
+        ViewModel viewModel;
 
         public MainWindow()
         {
             InitializeComponent();
-            ViewModel viewModel = new ViewModel();
+            viewModel = new ViewModel();
             DataContext = viewModel;
         }
 
-       
+        private void AllowEditOrder()
+        {
+            
+        }
+
+
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Utilities;
 
 namespace Entities
 {
     public class Order
     {
         protected int orderID;
+        protected string customerID;
         protected DateTime orderDate;
         protected DateTime requiredDate;
         protected DateTime shippedDate;
@@ -19,11 +21,12 @@ namespace Entities
         protected string shipCountry;
         protected List<OrderDetail> orderDetails;
 
-        public Order(int orderID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,
+        public Order(int orderID, string customerID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,
             int shipVia, decimal freight, string shipName, string shipAddress, string shipCity,
             string shipRegion, string shipPostalCode, string shipCountry, List<OrderDetail> orderDetails)
         {
             OrderID = orderID;
+            CustomerID = customerID;
             OrderDate = orderDate;
             RequiredDate = requiredDate;
             ShippedDate = shippedDate;
@@ -38,6 +41,8 @@ namespace Entities
             OrderDetails = orderDetails;
         }
 
+
+
         public virtual int OrderID
         {
             get
@@ -46,7 +51,15 @@ namespace Entities
             }
             set
             {
-                orderID = value;
+                (bool isValid, string errorMessage) = Validations.ValidateIsNegative(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(nameof(OrderID), errorMessage);
+                }
+                if(orderID != value)
+                {
+                    orderID = value;
+                }
             }
         }
 
@@ -58,7 +71,30 @@ namespace Entities
             }
             set
             {
-                orderDate = value;
+                if(orderDate != value)
+                {
+                    orderDate = value;
+                }
+            }
+        }
+        public virtual string CustomerID
+        {
+            get
+            {
+                return customerID;
+            }
+
+            set
+            {
+                (bool isValid, string errorMessage) = Validations.ValidateForNullOrWhitespace(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(nameof(CustomerID), errorMessage);
+                }
+                if(customerID != value)
+                {
+                    customerID = value;
+                }
             }
         }
 
@@ -70,7 +106,11 @@ namespace Entities
             }
             set
             {
-                requiredDate = value;
+                if(requiredDate != value)
+                {
+                    requiredDate = value;
+                }
+                 
             }
         }
 
@@ -82,7 +122,10 @@ namespace Entities
             }
             set
             {
-                shippedDate = value;
+                if(shippedDate != value)
+                {
+                    shippedDate = value;
+                }
             }
         }
 
@@ -94,7 +137,15 @@ namespace Entities
             }
             set
             {
-                shipVia = value;
+                (bool isValid, string errorMessage) = Validations.ValidateIsNegative(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(nameof(ShipVia), errorMessage);
+                }
+                if(shipVia != value)
+                {
+                    shipVia = value;
+                }             
             }
         }
 
@@ -105,8 +156,10 @@ namespace Entities
                 return freight;
             }
             set
-            {
-                freight = value;
+            {if(freight != value)
+                {
+                    freight = value;
+                }     
             }
         }
 
@@ -118,7 +171,10 @@ namespace Entities
             }
             set
             {
-                shipName = value;
+                if(shipName != value) 
+                {
+                    shipName = value;
+                }               
             }
         }
 
@@ -130,7 +186,10 @@ namespace Entities
             }
             set
             {
-                shipAddress = value;
+                if(shipAddress != value)
+                {
+                    shipAddress = value;
+                }                
             }
         }
 
@@ -142,7 +201,10 @@ namespace Entities
             }
             set
             {
-                shipCity = value;
+                if(shipCity != value)
+                {
+                    shipCity = value;
+                }
             }
         }
 
@@ -154,7 +216,10 @@ namespace Entities
             }
             set
             {
-                shipRegion = value;
+                if(shipRegion != value)
+                {
+                    shipRegion = value;
+                }
             }
         }
 
@@ -166,7 +231,10 @@ namespace Entities
             }
             set
             {
-                shipPostalCode = value;
+                if(shipPostalCode != value)
+                {
+                    shipPostalCode = value;
+                }
             }
         }
 
@@ -178,7 +246,10 @@ namespace Entities
             }
             set
             {
-                shipCountry = value;
+                if(shipCountry != value)
+                {
+                    shipCountry = value;
+                }
             }
         }
         public virtual List<OrderDetail> OrderDetails
@@ -196,6 +267,7 @@ namespace Entities
                 }
             }
         }
-      
+
+        
     }
 }
