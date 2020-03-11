@@ -23,5 +23,7 @@ namespace Gui
 
         public ObservableCollection<Order> Orders { get; set; }
         public ObservableCollection<OrderDetail> OrderDetails { get; set; }
+
+        public Order SelectedOrder { get; set; }
     }
 }

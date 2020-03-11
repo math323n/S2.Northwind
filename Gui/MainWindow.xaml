@@ -10,30 +10,19 @@
         Width="1024">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="450" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="275" />
+            <RowDefinition Height="190" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <!-- #region Order List -->
         <ListView x:Name="listView_orders"
-                  BorderThickness="1"
-                  Grid.ColumnSpan="3"
                   Background="LightGray"
-                  Grid.RowSpan="20"
+                  Grid.RowSpan="3"
                   ItemsSource="{Binding Orders}"
                   SelectedItem="{Binding SelectedOrder}">
             <ListView.View>
@@ -77,9 +66,155 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock />
+        <!--#endregion-->
 
+        <!-- #regionShip Details -->
+        <GroupBox Grid.Column="1"
+                  Margin="10"
+                  Header="Ship Details">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Ship Name"
+                               Width="120"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <TextBox x:Name="shipNameTextBox"
+                             Text="{Binding SelectedOrder.ShipName}"
+                             Width="150"
+                             IsReadOnly="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Ship Address"
+                               Width="120"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <TextBox x:Name="shipAddressTextBox"
+                             Text="{Binding SelectedOrder.ShipAddress}"
+                             Width="150"
+                             IsReadOnly="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Ship City"
+                               Width="120"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <TextBox x:Name="shipCityTextBox"
+                             Text="{Binding SelectedOrder.ShipCity}"
+                             Width="150"
+                             IsReadOnly="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Ship Region"
+                               Width="120"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <TextBox x:Name="shipRegionTextBox"
+                             Text="{Binding SelectedOrder.ShipRegion}"
+                             Width="150"
+                             IsReadOnly="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="PostalCode"
+                               Width="130"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <TextBox x:Name="shipPostalCodeTextBox"
+                             Text="{Binding SelectedOrder.ShipPostalCode}"
+                             Width="150"
+                             IsReadOnly="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Ship Country"
+                               Width="130"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <TextBox x:Name="shipCountryTextBox"
+                             Text="{Binding SelectedOrder.ShipCountry}"
+                             Width="150"
+                             IsReadOnly="True"></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <!--#endregion-->
 
+        <!-- #region Order Date Details -->
+        <GroupBox Grid.Column="1"
+                  Grid.Row="1"
+                  Margin="10"
+                  Header="Order Date Details">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Order Date"
+                               Width="120"
+                               Margin="5"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <DatePicker x:Name="datePicker_OrderDate"
+                                IsEnabled="False"
+                                DisplayDate="{Binding DateTime.Now}"
+                                SelectedDate="{Binding SelectedOrder.OrderDate}"
+                                Width="150"
+                                FontSize="18"
+                                FontWeight="SemiBold" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Required Date"
+                               Width="120"
+                               FontSize="20"
+                               Margin="5"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <DatePicker x:Name="datePicker_RequiredDate"
+                                IsEnabled="False"
+                                DisplayDate="{Binding DateTime.Now}"
+                                SelectedDate="{Binding SelectedOrder.RequiredDate}"
+                                Width="150"
+                                FontSize="18"
+                                FontWeight="SemiBold" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="7.5">
+                    <TextBlock Text="Shipped Date"
+                               Width="120"
+                               Margin="5"
+                               FontSize="20"
+                               FontFamily="Myriad Pro"
+                               FontWeight="Thin"></TextBlock>
+                    <DatePicker x:Name="datePicker_ShippedDate"
+                                IsEnabled="False"
+                                DisplayDate="{Binding DateTime.Now}"
+                                SelectedDate="{Binding SelectedOrder.ShippedDate}"
+                                Width="150"
+                                FontSize="18"
+                                FontWeight="SemiBold" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <!--#endregion-->
 
 
 

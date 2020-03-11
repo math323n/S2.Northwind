@@ -23,14 +23,12 @@ namespace Gui
     public partial class MainWindow: Window
     {
 
-        private ViewModel viewModel;
+        
 
         public MainWindow()
         {
             InitializeComponent();
-          Repository.GetAllOrderDetails();
-           Repository.GetAllOrders();
-            viewModel = new ViewModel();
+            ViewModel viewModel = new ViewModel();
             DataContext = viewModel;
         }
 
