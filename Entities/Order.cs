@@ -195,7 +195,9 @@ namespace Entities
                 }
             }
         }
-
-
+        public override string ToString()
+        {
+            return $"ID: {orderID}\nOrderDate: {orderDate.ToString("dd/MM/yyyy")}\nOrderdetails: {orderDetail.ToString()}";
+        }
     }
 }

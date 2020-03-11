@@ -74,6 +74,11 @@ namespace Entities
             {
                 discount = value;
             }
-        } 
+        }
+
+        public override string ToString()
+        {
+            return $"ID: {orderID}\nUnitprice: {unitPrice}\nQuantity: {quantity}\nDiscount: {discount}";
+        }
     }
 }
