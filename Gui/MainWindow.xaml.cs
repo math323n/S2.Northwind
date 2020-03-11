@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace Gui
     /// </summary>
     public partial class MainWindow: Window
     {
+
+        private ViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Repository.GetAllOrders();
+            viewModel = new ViewModel();
+            DataContext = viewModel;
         }
     }
 }

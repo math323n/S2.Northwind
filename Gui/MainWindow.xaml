@@ -10,9 +10,7 @@
         Width="800">
     <Grid>
 
-        <DataGrid
-            IsReadOnly="True">
-            
-        </DataGrid>
+        <ListView
+            ItemsSource="{Binding Orders}"></ListView>
     </Grid>
 </Window>

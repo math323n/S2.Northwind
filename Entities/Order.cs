@@ -21,7 +21,7 @@ namespace Entities
 
         public Order(int orderID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,
             int shipVia, decimal money, string shipName, string shipAddress, string shipCity,
-            string shipRegion, string shipPostalCode, string shipCountry, List<OrderDetail> orderDetail)
+            string shipRegion, string shipPostalCode, string shipCountry)
         {
             OrderID = orderID;
             OrderDate = orderDate;
@@ -195,9 +195,10 @@ namespace Entities
                 }
             }
         }
+        /*
         public override string ToString()
         {
             return $"ID: {orderID}\nOrderDate: {orderDate.ToString("dd/MM/yyyy")}\nOrderdetails: {orderDetail.ToString()}";
-        }
+        }*/
     }
 }
