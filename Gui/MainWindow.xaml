@@ -35,10 +35,10 @@
                                         Width="55" />
                         <GridViewColumn Header="CustomerID"
                                         DisplayMemberBinding="{Binding CustomerID}"
-                                        Width="80" />
+                                        Width="55" />
                         <GridViewColumn Header="Order Date"
-                                        DisplayMemberBinding="{Binding OrderDate}"
-                                        Width="120" />
+                                        DisplayMemberBinding="{Binding OrderDate, StringFormat={}{0:dd/MM/yyyy}}"
+                                        Width="60" />
                         <GridViewColumn Header="Freight"
                                         DisplayMemberBinding="{Binding Freight}"
                                         Width="70" />
