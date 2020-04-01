@@ -8,6 +8,7 @@ namespace Entities
     {
         protected int orderID;
         protected string customerID;
+        protected int employeeID;
         protected DateTime orderDate;
         protected DateTime requiredDate;
         protected DateTime shippedDate;
@@ -21,12 +22,13 @@ namespace Entities
         protected string shipCountry;
         protected List<OrderDetail> orderDetails;
 
-        public Order(int orderID, string customerID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,
+        public Order(int orderID, string customerID, int employeeID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,
             int shipVia, decimal freight, string shipName, string shipAddress, string shipCity,
             string shipRegion, string shipPostalCode, string shipCountry, List<OrderDetail> orderDetails)
         {
             OrderID = orderID;
             CustomerID = customerID;
+            EmployeeID = employeeID;
             OrderDate = orderDate;
             RequiredDate = requiredDate;
             ShippedDate = shippedDate;
@@ -94,6 +96,27 @@ namespace Entities
                 if(customerID != value)
                 {
                     customerID = value;
+                }
+            }
+        }
+
+        public virtual int EmployeeID
+        {
+            get
+            {
+                return employeeID;
+            }
+
+            set
+            {
+                (bool isValid, string errorMessage) = Validations.ValidateIsNegative(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(nameof(EmployeeID), errorMessage);
+                }
+                if(employeeID != value)
+                {
+                    employeeID = value;
                 }
             }
         }

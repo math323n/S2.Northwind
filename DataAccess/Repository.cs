@@ -106,6 +106,7 @@ namespace DataAccess
         {
             int orderID = (int)dataRow["OrderID"];
             string customerID = (string)dataRow["CustomerID"];
+            int employeeID = (int)dataRow["EmployeeID"];
             DateTime orderDate = (DateTime)dataRow["OrderDate"];
             DateTime requiredDate = (DateTime)dataRow["RequiredDate"];
             DateTime shippedDate = Convert.IsDBNull(dataRow["ShippedDate"]) ? DateTime.MinValue : (DateTime)dataRow["ShippedDate"];
@@ -131,7 +132,7 @@ namespace DataAccess
                     orderDetailList.Add(orderDetail);
                 }
             }
-            Order order = new Order(orderID, customerID, orderDate, requiredDate, shippedDate, shipVia, freight, shipName, shipAddress, shipCity, shipRegion, shipPostalCode, shipCountry, orderDetailList);
+            Order order = new Order(orderID, customerID, employeeID, orderDate, requiredDate, shippedDate, shipVia, freight, shipName, shipAddress, shipCity, shipRegion, shipPostalCode, shipCountry, orderDetailList);
 
             return order;
         }
