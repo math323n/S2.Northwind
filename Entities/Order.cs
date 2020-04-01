@@ -18,8 +18,8 @@ namespace Entities
         protected string shipAddress;
         protected string shipCity;
         protected string shipRegion;
-        protected string shipPostalCode;
-        protected string shipCountry;
+        protected string shipPostalCode; 
+        protected string shipCountry; 
         protected List<OrderDetail> orderDetails;
 
         public Order(int orderID, string customerID, int employeeID, DateTime orderDate, DateTime requiredDate, DateTime shippedDate,

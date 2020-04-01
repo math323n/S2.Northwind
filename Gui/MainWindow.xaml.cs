@@ -37,6 +37,9 @@ namespace Gui
             
         }
 
+        private void textBoxShipCountry_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
     }
 }
