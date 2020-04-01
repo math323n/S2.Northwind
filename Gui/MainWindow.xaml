@@ -38,13 +38,13 @@
                                         Width="55" />
                         <GridViewColumn Header="Order Date"
                                         DisplayMemberBinding="{Binding OrderDate, StringFormat={}{0:dd/MM/yyyy}}"
-                                        Width="60" />
+                                        Width="90" />
                         <GridViewColumn Header="Freight"
                                         DisplayMemberBinding="{Binding Freight}"
                                         Width="70" />
                         <GridViewColumn Header="Ship Name"
                                         DisplayMemberBinding="{Binding ShipName}"
-                                        Width="120" />
+                                        Width="180" />
                     </GridView>
                 </ListView.View>
             </ListView>
