@@ -109,11 +109,6 @@ namespace Entities
 
             set
             {
-                (bool isValid, string errorMessage) = Validations.ValidateIsNegative(value);
-                if(!isValid)
-                {
-                    throw new ArgumentException(nameof(EmployeeID), errorMessage);
-                }
                 if(employeeID != value)
                 {
                     employeeID = value;
@@ -160,11 +155,6 @@ namespace Entities
             }
             set
             {
-                (bool isValid, string errorMessage) = Validations.ValidateIsNegative(value);
-                if(!isValid)
-                {
-                    throw new ArgumentException(nameof(ShipVia), errorMessage);
-                }
                 if(shipVia != value)
                 {
                     shipVia = value;

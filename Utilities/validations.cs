@@ -6,9 +6,9 @@ namespace Utilities
     {
         public static (bool, string) ValidateIsNegative(double number)
         {
-            if(number <= 0)
+            if(number < 0)
             {
-                return (false, "Error, number below or equal to 0.");
+                return (false, "Error, number below to 0.");
 
             }
             else

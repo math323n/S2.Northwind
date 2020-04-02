@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace DataAccess
 {
@@ -37,12 +38,11 @@ namespace DataAccess
 
         #region Helper Methods
         /// <summary>
-        /// Executes the provided SQL statement and returns data wrapped in a data set, if any.
+        /// Executes the provided SQL statement and returns data wrapped in a data set, if any. 
         /// </summary>
         /// <param name="sql">The SQL statement to execute.</param>
         /// <returns>A <see cref="DataSet"/> wrapping any returned data.</returns>
         /// <exception cref="ArgumentException"/>
-        /// <exception cref=""
         public DataSet Execute(string query)
         {
             if(string.IsNullOrWhiteSpace(query))
@@ -50,19 +50,14 @@ namespace DataAccess
                 throw new ArgumentException("Null or whitespace.");
             }
             DataSet resultSet = new DataSet();
-            try
-            {
+           
                 SqlConnection connection = GetConnection(connectionString) as SqlConnection;
                 using(SqlDataAdapter adapter = new SqlDataAdapter(new SqlCommand(query, connection)))
                 {
                     adapter.Fill(resultSet);
                 }
                 return resultSet;
-            }
-            catch(Exception e)
-            {
-                throw new Exception("Data access error. See inner exception for details", e);
-            }
+          
         }
         /// <summary>
         /// Creates a connection based on the name of the input parameter connection string.
@@ -214,6 +209,23 @@ namespace DataAccess
                 }
             }
             return orderDetails;
+        }
+
+        public void AddOrder(Order order)
+        {
+            string sql = $"INSERT INTO Orders(CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry)  VALUES('{order.CustomerID}', '{order.EmployeeID}', " +
+               $"'{order.OrderDate}', '{order.RequiredDate}', '{order.ShippedDate}', '{order.ShipVia}'," +
+               $" '{order.Freight}', '{order.ShipName}', '{order.ShipAddress}', '{order.ShipCity}', " +
+               $" '{order.ShipRegion}', '{order.ShipPostalCode}', '{order.ShipCountry}')";
+            DataSet resultSet;
+            try
+            {
+                resultSet = Execute(sql);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
         }
     }
 }

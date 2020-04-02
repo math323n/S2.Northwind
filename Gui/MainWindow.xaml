@@ -36,16 +36,28 @@
                                         Width="55" />
                         <GridViewColumn Header="CustomerID"
                                         DisplayMemberBinding="{Binding CustomerID}"
-                                        Width="55" />
+                                        Width="80" />
                         <GridViewColumn Header="Order Date"
                                         DisplayMemberBinding="{Binding OrderDate, StringFormat={}{0:dd/MM/yyyy}}"
-                                        Width="90" />
+                                        Width="100" />
                         <GridViewColumn Header="Freight"
                                         DisplayMemberBinding="{Binding Freight}"
-                                        Width="70" />
+                                        Width="100" />
                         <GridViewColumn Header="Ship Name"
                                         DisplayMemberBinding="{Binding ShipName}"
+                                        Width="200" />
+                        <GridViewColumn Header="Ship Region"
+                                        DisplayMemberBinding="{Binding ShipRegion}"
+                                        Width="70" />
+                        <GridViewColumn Header="Ship Country"
+                                        DisplayMemberBinding="{Binding ShipCountry}"
+                                        Width="120" />
+                        <GridViewColumn Header="Postalcode"
+                                        DisplayMemberBinding="{Binding ShipPostalCode}"
                                         Width="180" />
+                        <GridViewColumn Header="Required Date"
+                                        DisplayMemberBinding="{Binding RequiredDate, StringFormat={}{0:dd/MM/yyyy}}"
+                                        Width="120" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -73,7 +85,8 @@
                             Height="40"
                             Content="New"
                             FontFamily="Myriad Pro"
-                            FontWeight="Bold">
+                            FontWeight="Bold"
+                            Click="NewOrderButton_Click">
                     </Button>
                 </StackPanel>
                 <StackPanel>
@@ -84,7 +97,8 @@
                             Height="40"
                             Content="Edit"
                             FontFamily="Myriad Pro"
-                            FontWeight="Bold">
+                            FontWeight="Bold"
+                            Click="EditOrderButton_Click">
                     </Button>
                 </StackPanel>
                 <StackPanel>
@@ -106,7 +120,8 @@
                             Height="40"
                             Content="Save"
                             FontFamily="Myriad Pro"
-                            FontWeight="Bold">
+                            FontWeight="Bold"
+                            >
                     </Button>
                 </StackPanel>
 
@@ -133,11 +148,11 @@
                                Width="100"
                                FontSize="16"
                                FontFamily="Myriad Pro"
-                               FontWeight="Thin"></TextBlock>
-                    <TextBox x:Name="shipNameTextBox"
-                             Text="{Binding SelectedOrder.OrderID}"
-                             Width="150"
-                             IsReadOnly="True"></TextBox>
+                               FontWeight="Thin" />
+                    <ComboBox x:Name="comboBoxOrderID"
+                              SelectedItem="{Binding SelectedOrder.OrderID}"
+                              Width="150"
+                             />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
@@ -147,10 +162,10 @@
                                FontSize="16"
                                FontFamily="Myriad Pro"
                                FontWeight="Thin"></TextBlock>
-                    <TextBox x:Name="shipAddressTextBox"
-                             Text="{Binding SelectedOrder.CustomerID}"
-                             Width="150"
-                             IsReadOnly="True" />
+                    <ComboBox x:Name="comboBoxCustomerID"
+                              Text="{Binding SelectedOrder.CustomerID}"
+                              Width="150"
+                              />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
@@ -160,10 +175,9 @@
                                FontSize="16"
                                FontFamily="Myriad Pro"
                                FontWeight="Thin"></TextBlock>
-                    <TextBox x:Name="shipCityTextBox"
-                             Text="{Binding SelectedOrder.EmployeeID}"
-                             Width="150"
-                             IsReadOnly="True"></TextBox>
+                    <ComboBox x:Name="comboBoxEmployeeID"
+                              Text="{Binding SelectedOrder.EmployeeID}"
+                              Width="150"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
@@ -172,11 +186,11 @@
                                Width="100"
                                FontSize="16"
                                FontFamily="Myriad Pro"
-                               FontWeight="Thin"></TextBlock>
+                               FontWeight="Thin" />
                     <DatePicker x:Name="datePickerOrderDate"
                                 IsEnabled="False"
                                 DisplayDate="{Binding DateTime.Now}"
-                                SelectedDate="{Binding SelectedOrder.OrderDate}"
+                                Text="{Binding SelectedOrder.OrderDate}"
                                 Width="150"
                                 FontSize="16"
                                 FontWeight="SemiBold" />
@@ -192,7 +206,7 @@
                     <DatePicker x:Name="datePickerRequiredDate"
                                 IsEnabled="False"
                                 DisplayDate="{Binding DateTime.Now}"
-                                SelectedDate="{Binding SelectedOrder.RequiredDate}"
+                                Text="{Binding SelectedOrder.RequiredDate}"
                                 Width="150"
                                 FontSize="16"
                                 FontWeight="SemiBold" />
@@ -208,7 +222,7 @@
                     <DatePicker x:Name="datePickerShippedDate"
                                 IsEnabled="False"
                                 DisplayDate="{Binding DateTime.Now}"
-                                SelectedDate="{Binding SelectedOrder.ShippedDate}"
+                                Text="{Binding SelectedOrder.ShippedDate}"
                                 Width="150"
                                 FontSize="16"
                                 FontWeight="SemiBold" />
@@ -237,7 +251,7 @@
                                FontSize="16"
                                FontFamily="Myriad Pro"
                                FontWeight="Thin"></TextBlock>
-                    <TextBox x:Name="textBoxShipVia"
+                    <ComboBox x:Name="comboBoxShipVia"
                              Text="{Binding SelectedOrder.ShipVia}"
                              Width="170"
                              IsReadOnly="True" />
@@ -331,8 +345,7 @@
                     <TextBox x:Name="textBoxShipCountry"
                              Text="{Binding SelectedOrder.ShipCountry}"
                              Width="170"
-                             IsReadOnly="True"
-                             TextChanged="textBoxShipCountry_TextChanged" />
+                             IsReadOnly="True"         />
                 </StackPanel>
             </StackPanel>
         </GroupBox>
